@@ -1,0 +1,24 @@
+{
+  "name": "newpro",
+  "version": "1.0.0",
+  "description": "a project management applications for myself",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node index.js"
+  },
+  "keywords": [
+    "backend",
+    "learnign",
+    "api",
+    "creation",
+    "testing",
+    "the",
+    "file"
+  ],
+  "author": "Aamin Simmi Singh",
+  "license": "ISC",
+  "devDependencies": {
+    "prettier": "3.8.1"
+  }
+}
