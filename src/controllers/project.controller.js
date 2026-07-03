@@ -48,7 +48,7 @@ const updateProject = asyncHandler(async(req,res) =>{
       {
         name,
         description
-    },
+      },
     {new:true}
   );
   if(!project){
