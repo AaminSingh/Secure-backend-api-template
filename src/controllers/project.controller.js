@@ -71,6 +71,45 @@ const getProjects = asyncHandler(async(req,res) => {
         )
       )
 })
+// ProjectMembers Collection
+//         │
+//         ▼
+// $match
+// (only current user's records)
+
+//         │
+//         ▼
+// $lookup
+// (fetch project details)
+
+//         │
+//         ▼
+// pipeline
+// (inside project)
+
+//         │
+//         ▼
+// $lookup
+// (find all project members)
+
+//         │
+//         ▼
+// $addFields
+// (count members)
+
+//         │
+//         ▼
+// $unwind
+// (remove array)
+
+//         │
+//         ▼
+// $project
+// (select only required fields)
+
+//         │
+//         ▼
+// Return Result
 const getProjectById = asyncHandler(async(req,res) => {
  //test
 })
