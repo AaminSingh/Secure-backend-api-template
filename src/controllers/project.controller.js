@@ -376,7 +376,7 @@ const deleteMember = asyncHandler(async(req,res) => {
 export {
     addMemberToProject,
     createProject,
-    delteMember,
+    deleteMember,
     getProjects,
     getProjectById,
     getProjectMembers,
