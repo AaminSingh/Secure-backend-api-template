@@ -222,6 +222,42 @@ const addMemberToProject = asyncHandler(async(req,res) => {
     return res.status(201).json(new ApiResponse(201,"Project member added successfully"))
 
    })
+//    Frontend
+//      │
+//      ▼
+// email
+// role
+// projectId
+//      │
+//      ▼
+// Find user by email
+//      │
+//      ▼
+// User exists?
+//  ┌───────────────┐
+//  │      No       │
+//  └──────┬────────┘
+//         ▼
+//  Throw 404 Error
+
+//         │
+//        Yes
+//         ▼
+// Search ProjectMember
+// (user + project)
+//         │
+//         ▼
+// Found?
+//    │          │
+//    │          │
+//   Yes        No
+//    │          │
+// Update      Create
+//  role       member
+//    │          │
+//    └──────┬───┘
+//           ▼
+// Return Success
 
 const getProjectMembers = asyncHandler(async(req,res) =>{
  const {projectId} = req.params
@@ -258,7 +294,12 @@ const getProjectMembers = asyncHandler(async(req,res) =>{
   {
       $addFields:{
         user:{
-          arrayElemAt:["$user",0]
+          $arrayElemAt:["$user",0]
+          // takes the first element of the array.
+
+          // Since every ProjectMember belongs to exactly one user,
+
+          // the array always contains one object.
         }
       }
   },
