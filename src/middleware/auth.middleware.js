@@ -1,5 +1,5 @@
 import { User } from "../models/user.models.js";
-import { ProjectMember } from "../models/projectmember.models.js";
+import { ProjectMember } from "../models/projectmember.modles.js";
 import {ApiError} from "../utils/api-error.js";
 import {asyncHandler} from "../utils/async-handler.js";
 import jwt from "jsonwebtoken";
@@ -25,8 +25,8 @@ export const verifyJWT = asyncHandler(async(req, res,next)=>{
       }
 })
 
-export const validateProjectPermission = (roles = []) =>{
-  asyncHandler(async(req,res,next)=>{
+export const validateProjectPermission = (roles = []) => {
+  return asyncHandler(async(req,res,next)=>{
     const {projectId} = req.params
     if(!projectId){
       throw new ApiError(400,"ProjectId is required")
@@ -42,7 +42,7 @@ export const validateProjectPermission = (roles = []) =>{
     const givenRole = project?.role      //role extracted from the project itself
     req.user.role = givenRole
 
-    if(!roles.includes(givenRole)){
+    if(roles.length && !roles.includes(givenRole)){
       throw new ApiError (403,
         "you do not have permission to perform this action")
     }

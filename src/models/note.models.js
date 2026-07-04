@@ -1,7 +1,7 @@
-import mongoose from "mongoose";
+import mongoose, { Schema } from "mongoose";
 const projectNoteSchema = new Schema({
     project:{
-        type:Schema.types.ObjectId,
+        type:Schema.Types.ObjectId,
         ref:"Project",
         required:true
     },

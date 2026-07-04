@@ -6,7 +6,6 @@ import {ApiError} from "../utils/api-error.js"
 import { asyncHandler } from "../utils/async-handler.js"
 import mongoose from 'mongoose';
 import { AvailableUserRoles, UserRolesEnum } from '../utils/constants.js';
-import { pipeline } from 'nodemailer/lib/xoauth2/index.js';
 
 const getProjects = asyncHandler(async(req,res) => {
   const projects = await ProjectMember.aggregate([
@@ -133,11 +132,11 @@ const createProject = asyncHandler(async(req,res) => {
   const project = await Project.create({
     name,
     description,
-    createdBy:new mongoose.Types.ObjectId(req.user_id),  //this ensures that whtever objectId we are passing that  is 100% mongoogse objectId
+    createdBy:new mongoose.Types.ObjectId(req.user._id),  //this ensures that whatever objectId we are passing is a valid mongoose ObjectId
 
   });
   await ProjectMember.create({
-    user:new mongoose.Types.ObjectId(req.user_id),
+    user:new mongoose.Types.ObjectId(req.user._id),
     project:new mongoose.Types.ObjectId(project._id),
     role:UserRolesEnum.ADMIN
   })  
@@ -261,7 +260,7 @@ const addMemberToProject = asyncHandler(async(req,res) => {
 
 const getProjectMembers = asyncHandler(async(req,res) =>{
  const {projectId} = req.params
- const project  = await Project.findById(req.params)
+ const project  = await Project.findById(projectId)
  
  if(!project){
   throw new ApiError (404,"Project not found")
@@ -320,7 +319,7 @@ const getProjectMembers = asyncHandler(async(req,res) =>{
       .json( new ApiResponse(200,projectMembers,"project memebers fetched") )
 })
 const updateMemberRole = asyncHandler(async(req,res) => {
- const{projectId,user_id} = req.params
+ const{projectId,userId} = req.params
  const{newRole} = req.body
  if(!AvailableUserRoles.includes(newRole)){
   throw new ApiError(400,"Invalid role")
@@ -349,7 +348,7 @@ const updateMemberRole = asyncHandler(async(req,res) => {
 
 })
 const deleteMember = asyncHandler(async(req,res) => {
- const{projectId,user_id} = req.params
+ const{projectId,userId} = req.params
 
  
  let projectMember = await ProjectMember.findOne({

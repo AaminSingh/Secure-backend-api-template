@@ -1,13 +1,13 @@
-import moongoose from "mongoose";
+import mongoose, { Schema } from "mongoose";
 import {AvailableUserRoles, UserRolesEnum} from "../utils/constants.js"
 
-const projectMemberSchema = new mongoose.Schema({
+const projectMemberSchema = new Schema({
     user:{
         type:Schema.Types.ObjectId,
         ref:"User",
         required:true
     },
-     Project:{
+     project:{
         type:Schema.Types.ObjectId,
         ref:"Project",
         required:true
@@ -17,6 +17,6 @@ const projectMemberSchema = new mongoose.Schema({
         enum:AvailableUserRoles,
         default:UserRolesEnum.MEMBER
     }
-},{Timestamps:true})
+},{timestamps:true})
 
 export const ProjectMember = mongoose.model("ProjectMember",projectMemberSchema)

@@ -1,6 +1,5 @@
-import mongoose from "mongoose";
-import {AvailableTaskStatus, AvailableUserRoles, UserRolesEnum} from "../utils/constants.js"
-import { Project } from "./project.models.js";
+import mongoose, { Schema } from "mongoose";
+import {AvailableTaskStatus} from "../utils/constants.js"
 const taskSchema = new Schema({
     title:{
         type:String,
@@ -23,7 +22,7 @@ const taskSchema = new Schema({
     },
     status:{
         type:String,
-        enum:AvailableTaskStatus.TODO
+        enum:AvailableTaskStatus
     },
     attatchments:{                 
         type:[{                     //may be required in array form
