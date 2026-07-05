@@ -118,14 +118,14 @@ const getTaskById = asyncHandler(async(req,res)=>{
                        }
                 ]
             }
-         },
-         {
+        },
+        {
             $addFields:{
                 assignedTo:{
                     arrayElemAt:["$assignedTo",0]
                 }
             }
-         }
+        }
         
                   
     ]);
