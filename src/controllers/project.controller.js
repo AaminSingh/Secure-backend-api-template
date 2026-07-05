@@ -69,7 +69,7 @@ const getProjects = asyncHandler(async(req,res) => {
           "Project fetched successfully"
         )
       )
-})
+   })
 // ProjectMembers Collection
 //         │
 //         ▼
