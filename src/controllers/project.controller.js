@@ -275,8 +275,8 @@ const getProjectMembers = asyncHandler(async(req,res) =>{
   {
     $lookup:{
       from:"user",
-      localfield:"user",
-      foreignfield:"_id",
+      localField:"user",
+      foreignField:"_id",
       as:"user",
       pipeline:[
         {
