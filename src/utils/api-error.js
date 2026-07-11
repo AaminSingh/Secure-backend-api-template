@@ -11,6 +11,8 @@ class ApiError extends Error{         //ApiError gets all the features of Error 
     this.message = message
     this.success = false
     this.errors = errors
+    //Calls the parent (Error) constructor and initializes the standard error message.
+    //Without super(), you cannot use this in a subclass constructor, and JavaScript will throw an error.
 
     if(stack){
         this.stack = stack
