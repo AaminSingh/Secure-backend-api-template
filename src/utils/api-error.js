@@ -20,3 +20,14 @@ class ApiError extends Error{
 }
 }
 export{ApiError}
+
+//Normally, JavaScript already has a built-in Error class.
+//throw new Error("Something went wrong");
+//But this doesn't tell us:
+
+// HTTP Status Code?
+// Success?
+// Validation Errors?
+// Extra Data?
+
+// So we create our own Error class.
