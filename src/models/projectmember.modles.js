@@ -14,8 +14,8 @@ const projectMemberSchema = new Schema({
     },
     role:{
         type:String,
-        enum:AvailableUserRoles,
-        default:UserRolesEnum.MEMBER
+        enum:AvailableUserRoles,        //enum is used to restrict the values of role to only those defined in AvailableUserRoles
+        default:UserRolesEnum.MEMBER       //it means if the role is not provided, it will be set to MEMBER by default
     }
 },{timestamps:true})
 
