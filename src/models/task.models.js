@@ -9,7 +9,7 @@ const taskSchema = new Schema({
     description:String,
     Project:{
         type:Schema.Types.ObjectId,
-        ref:"Project",
+        ref:"Project", //"This ObjectId belongs to which collection?"
         required:true
     },
     assignedTo:{
