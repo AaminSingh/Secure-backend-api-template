@@ -60,6 +60,7 @@ const userSchema = new Schema(
 },{
 timestamps:true
 },
+
 );
 
 userSchema.pre('save',async function(){
