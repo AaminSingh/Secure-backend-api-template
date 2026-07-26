@@ -109,3 +109,4 @@ userSchema.methods.generateTemporaryToken = function(){
   return {unHashedToken, hashedToken, tokenExpiry}
 }
  export const User = mongoose.model("User",userSchema)
+ //Access Token
