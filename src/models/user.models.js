@@ -113,3 +113,4 @@ userSchema.methods.generateTemporaryToken = function(){
 //Proves the user is logged in and can access protected APIs
 
 //Refresh Token
+//Gets a new access token when the old one expires
