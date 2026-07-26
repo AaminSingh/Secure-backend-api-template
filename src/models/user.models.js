@@ -114,3 +114,5 @@ userSchema.methods.generateTemporaryToken = function(){
 
 //Refresh Token
 //Gets a new access token when the old one expires
+
+//Temporary Token
