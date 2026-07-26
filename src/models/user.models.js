@@ -116,3 +116,4 @@ userSchema.methods.generateTemporaryToken = function(){
 //Gets a new access token when the old one expires
 
 //Temporary Token
+//Performs a one-time action, such as email verification or password reset
