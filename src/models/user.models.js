@@ -110,3 +110,4 @@ userSchema.methods.generateTemporaryToken = function(){
 }
  export const User = mongoose.model("User",userSchema)
  //Access Token
+//Proves the user is logged in and can access protected APIs
